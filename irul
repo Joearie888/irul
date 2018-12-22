@@ -1,0 +1,99 @@
+#!/system/xbin/bash
+clear
+n="\033[0m" # Normal
+c="\033[90m" # Coklat
+m="\033[91m" # Merah
+h="\033[92m" # Hijau
+k="\033[93m" # Kuning
+u="\033[94m" # Ungu
+p="\033[95m" # Pink
+b="\033[96m" # Biru
+sh 0
+echo "$u        ╔═══════════════════════════════════╗
+        ║$k Pembuat  :$b Ahmad Khoirul Marzuqin$u ║
+        ║$k Whatsapp :$b +1 (808) 999-9880     $u ║
+        ╚═══════════════════════════════════╝
+
+╔══╗
+║"$n"››"$u"║$b Menu Yang Tersedia :$u
+║  ║
+║"$n"00"$u"║$n Pembaruan$u
+║"$n"01"$u"║$c Bot$u
+║"$n"02"$u"║$m Call$u
+║"$n"03"$u"║$h Facebook$u
+║"$n"04"$u"║$k Nomor NIK Dan Nomor KK$u
+║"$n"05"$u"║$p Sms$u
+║"$n"06"$u"║$b Whatsapp BUKALAPAK$u
+║"$n"07"$u"║$n Youtube Musik$u
+║"$n"08"$u"║$c Tanpa Termux$u
+║  ║"
+echo -n "║"$n"››"$u"║$b Pilih Nomor :$n "
+read irul
+echo $u"╚══╝$n"
+termux-tts-speak $irul
+
+# Pembaruan
+if [ $irul = 00 ] || [ $irul = 0 ]
+then
+sh p
+fi
+
+# Bot
+if [ $irul = 01 ] || [ $irul = 1 ]
+then
+cd bot
+sh irul
+fi
+
+# Call
+if [ $irul = 02 ] || [ $irul = 2 ]
+then
+cd call
+sh irul
+fi
+
+# Facebook
+if [ $irul = 03 ] || [ $irul = 3 ]
+then
+cd facebook
+sh irul
+fi
+
+# Nomor NIK Dan Nomor KK
+if [ $irul = 04 ] || [ $irul = 4 ]
+then
+sh 0
+php n
+sh 2
+fi
+
+# Sms
+if [ $irul = 05 ] || [ $irul = 5 ]
+then
+cd sms
+sh irul
+fi
+
+# Whatsapp BUKALAPAK
+if [ $irul = 06 ] || [ $irul = 6 ]
+then
+sh 0
+php wb
+sh 1
+fi
+
+# Youtube Musik
+if [ $irul = 07 ] || [ $irul = 7 ]
+then
+sh ym
+fi
+
+# Tanpa Termux
+if [ $irul = 08 ] || [ $irul = 8 ]
+then
+sh tt
+fi
+
+termux-tts-speak Nomor Yang Anda Masukkan Salah
+termux-tts-speak Silahkan Hubungi Pembuat Script Ini
+sh irul

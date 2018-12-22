@@ -1,0 +1,42 @@
+#!/system/xbin/bash
+# Ahmad Khoirul Marzuqin
+n="\033[0m" # Normal
+# Ahmad Khoirul Marzuqin
+c="\033[90m" # Coklat
+# Ahmad Khoirul Marzuqin
+m="\033[91m" # Merah
+# Ahmad Khoirul Marzuqin
+h="\033[92m" # Hijau
+# Ahmad Khoirul Marzuqin
+k="\033[93m" # Kuning
+# Ahmad Khoirul Marzuqin
+u="\033[94m" # ungu
+# Ahmad Khoirul Marzuqin
+p="\033[95m" # Pink
+# Ahmad Khoirul Marzuqin
+b="\033[96m" # Biru
+# Ahmad Khoirul Marzuqin
+sh 0
+# Ahmad Khoirul Marzuqin
+echo "$u         ╔═════════════════════════════════╗
+         ║$h Copy Link Yang Ada Di Bawah Ini$u ║
+         ║$k  Ke Peramban Atau Browser Anda$u  ║
+         ╚═════════════════════════════════╝
+
+╔═╗
+║"$n"›"$u"║$h Cctv$u
+║ ║$b http://www.insecam.org$u
+║ ║
+║"$n"›"$u"║$h Nomor NIK Dan Nomor KK$u
+║ ║$b https://nabila-tools.000webhostapp.com/e-ktp.php$u
+║ ║
+║"$n"›"$u"║$h Spam$u
+║ ║$k Call TOKOPEDIA$b http://cyberone.ga/Bom/index.html$u
+║ ║$k Call Dan Sms$b   http://kingtools.id$u
+║ ║
+║"$n"›"$u"║$h Tembak Paket$u
+║ ║$b https://panel.hcr-tech.com$u
+╚═╝$n"
+# Ahmad Khoirul Marzuqin
+sh 2
+# Ahmad Khoirul Marzuqin
