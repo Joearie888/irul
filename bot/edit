@@ -1,0 +1,92 @@
+#!/system/xbin/bash
+clear
+n="\033[0m" # Normal
+c="\033[90m" # Coklat
+m="\033[91m" # Merah
+h="\033[92m" # Hijau
+k="\033[93m" # Kuning
+u="\033[94m" # Ungu
+p="\033[95m" # Pink
+b="\033[96m" # Biru
+sh 0
+echo "$u               ╔════════════════════╗
+               ║$k Edit Data Aplikasi$u ║
+               ╚════════════════════╝
+
+╔══╗
+║"$n"››"$u"║$b Menu Yang Tersedia :$u
+║  ║
+║"$n"01"$u"║$n Caping$u
+║"$n"02"$u"║$c Cashtree$u
+║"$n"03"$u"║$m KUBIK$u
+║"$n"04"$u"║$h ToToNews$u
+║"$n"05"$u"║$k VeeU$u
+║"$n"06"$u"║$p YDNews$u
+║"$n"09"$u"║$b Kembali$u
+║  ║"
+echo -n "║"$n"››"$u"║$b Pilih Nomor :$n "
+read irul
+echo $u"╚══╝$n"
+termux-tts-speak $irul
+
+# Bot Caping
+if [ $irul = 01 ] || [ $irul = 1 ]
+then
+cd caping
+nano config.php
+cd ..
+sh irul
+fi
+
+# Bot Cashtree
+if [ $irul = 02 ] || [ $irul = 2 ]
+then
+nano c
+sh irul
+fi
+
+# Bot KUBIK
+if [ $irul = 03 ] || [ $irul = 3 ]
+then
+cd kubik
+nano cfg.php
+cd ..
+sh irul
+fi
+
+# Bot ToToNews
+if [ $irul = 04 ] || [ $irul = 4 ]
+then
+cd totonews
+nano config.php
+cd ..
+sh 1
+fi
+
+# Bot VeeU
+if [ $irul = 05 ] || [ $irul = 5 ]
+then
+cd veeu
+nano config.php
+cd ..
+sh 1
+fi
+
+# Bot YDNews
+if [ $irul = 06 ] || [ $irul = 6 ]
+then
+cd ydnews
+nano config.php
+cd ..
+sh 1
+fi
+
+# Kembali
+if [ $irul = 09 ] || [ $irul = 9 ]
+then
+sh irul
+fi
+
+termux-tts-speak Nomor Yang Anda Masukkan Salah
+termux-tts-speak Silahkan Hubungi Pembuat Script Ini
+sh edit

@@ -1,0 +1,176 @@
+<?php
+date_default_timezone_set('Asia/Jakarta');
+require_once("dc");
+
+
+
+/*
+Ganti xxx Dengan Data-Data
+Yang Ada Di Packet Capture
+*/
+
+
+
+$config['mmses'] 		= 'AaW8w%2F0HyrYO8fmJa83fs1h0eLaFN9vWMYtFoxK4Jh2kaAFsQil9KDq9kHzm3rwzO1jAYphVSe%2Bb%2FXAT9x7uww%3D%3D';
+$config['gaid'] 		= 'd34a7273-7880-4e08-9bae-41f83bde9de7';
+$config['av'] 			= '23040';
+$config['imei'] 		= '357559060490988';
+
+
+
+/*
+Untuk Menyimpan Tekan Tombol
+CTRL + X > Y > Enter
+*/
+
+
+
+# Ahmad Khoirul Marzuqin
+$n = "\e[0m"; # Normal
+# Ahmad Khoirul Marzuqin
+$c = "\e[90m"; # Coklat
+# Ahmad Khoirul Marzuqin
+$m = "\e[91m"; # Merah
+# Ahmad Khoirul Marzuqin
+$h = "\e[92m"; # Hijau
+# Ahmad Khoirul Marzuqin
+$k = "\e[93m"; # Kuning
+# Ahmad Khoirul Marzuqin
+$u = "\e[94m"; # Ungu
+# Ahmad Khoirul Marzuqin
+$p = "\e[95m"; # Pink
+# Ahmad Khoirul Marzuqin
+$b = "\e[96m"; # Biru
+# Ahmad Khoirul Marzuqin
+echo "$u             ╔════════════════════════╗
+             ║$k Bot         :$h Cashtree$u ║
+             ║$k Kode Invite :$h c249010$u  ║
+             ╚════════════════════════╝\n\n";
+# Ahmad Khoirul Marzuqin
+$urls[] = array('url' 	=> 'https://api.ctree.id/api2/user/info?mmses='.$config['mmses'].'&av='.$config['av'].'&ov=8.0.0&lc=in_ID&pn=com.vitiglobal.cashtree');
+$responsx = $sdata->sdata($urls); unset($url); 
+$jsonAuth = json_decode($responsx[0]['respons'],true);
+if($jsonAuth['code'] == 0 && !empty($jsonAuth['result']['info']['ph'])){
+	echo "╔═╗\n║".$n."›".$u."║$b INFORMASI AKUN ANDA$u\n";
+	echo "║".$n."›".$u."║$k Saldo Saat Ini :$h Rp. ".$jsonAuth['result']['cash_status']['total']."$u\r\n║".$n."›".$u."║$k Saldo Hari Ini :$h Rp. ".$jsonAuth['result']['cash_status']['earn_today']."$u\r\n";
+	echo "║".$n."›".$u."║$k Nomor Hp :$h ".$jsonAuth['result']['info']['ph']."$u\r\n║".$n."›".$u."║$k Kode Invite :$h ".$jsonAuth['result']['info']['inv_code']."$u\r\n";
+	echo "║ ║$u\r\n";
+	echo "║".$n."›".$u."║$h Login Berhasil ...$u\r\n";
+	echo "║ ║\r\n";
+}else{
+	die("$u\n║".$n."›".$u."║$m !!! Data Salah$n Atau$m Koneksi Internet !!!$n\n");
+}
+while (TRUE) {
+	$url[] = array('url' => 'https://api.ctree.id/api2/ad/list');
+	$hed[] = array('post' => 'lng=111.22222&gaid='.$config['gaid'].'&ov=8.0.0&l={}&m={}&mmses='.$config['mmses'].'&r={}&gpid=^localroot'.time().'n@gmail.com&av='.$config['av'].'&lc=in_ID&imei='.$config['imei'].'&pn=com.vitiglobal.cashtree&lat=-6.123388383');
+	$respons = $sdata->sdata($url , $hed); unset($url); unset($hed);
+	$json 	 = json_decode($respons['0']['respons'],true);
+	foreach ($json['result']['al'] as $key => $datadaily) {
+		if(strtolower($datadaily['tp']) == 'visit'){
+			if($datadaily['dr'] == 0){
+				echo $u."║".$n."›".$u."║$n ".$datadaily['a']."$k     ".$datadaily['tp']." Dapat :$b +Rp. ".$datadaily['dr']."$u\n║ ║$c ".$datadaily['tt']."$u\n║ ║$m Poin Sudah Di Ambil$u\r\n";
+			}else{
+				echo $u."║".$n."›".$u."║$n ".$datadaily['a']."$k     ".$datadaily['tp']." Dapat :$b +Rp. ".$datadaily['dr']."$u\n║ ║$c ".$datadaily['tt'];
+				$url[] = array('url' 	=> 'https://api.ctree.id/api2/ad/start');
+				$hed[] = array('post'	=> 'mmses='.$config['mmses'].'&adid='.$datadaily['a'].'&av='.$config['av'].'&ov=8.0.0&lc=in_ID&from=C&pn=com.vitiglobal.cashtree');
+				$respons = $sdata->sdata($url , $hed); unset($url); unset($hed);
+				$json 	 = json_decode($respons['0']['respons'],true);
+
+				$url[] = array('url' 	=> "https://api.ctree.id/".$json['result']['redirect']);
+				$url[] = array('url' 	=> $json['result']['url']);
+				$urls[] = array('url' 	=> 'https://api.ctree.id/api2/user/info?mmses='.$config['mmses'].'&av='.$config['av'].'&ov=8.0.0&lc=in_ID&pn=com.vitiglobal.cashtree');
+
+				$respons = $sdata->sdata($url); unset($url); 
+				$responsx = $sdata->sdata($urls); unset($url); 
+
+				$json = json_decode($responsx['0']['respons'],true);
+				echo "$u\n║ ║$h Visit Berhasil$u\n║ ║$k Saldo Saat Ini :$h Rp. ".$json['result']['cash_status']['total']."$u\n║ ║$k Saldo Hari Ini :$h Rp. ".$json['result']['cash_status']['earn_today']."$u\r\n";
+
+			}
+		}
+
+		if(strtolower($datadaily['tp']) == 'watch'){
+			if($datadaily['dr'] == 0){
+				echo $u."║".$n."›".$u."║$n ".$datadaily['a']."$k     ".$datadaily['tp']." Dapat :$b +Rp. ".$datadaily['dr']."$u\n║ ║$c ".$datadaily['tt']."$u\n║ ║$m Poin Sudah Di Ambil$u\r\n";
+			}else{
+				echo $u."║".$n."›".$u."║$n ".$datadaily['a']."$k     ".$datadaily['tp']." Dapat :$b +Rp. ".$datadaily['dr']."$u\n║ ║$c ".$datadaily['tt'];
+				$url[] = array('url' 	=> 'https://api.ctree.id/api2/ad/start');
+				$hed[] = array('post'	=> 'mmses='.$config['mmses'].'&adid='.$datadaily['a'].'&av='.$config['av'].'&ov=8.0.0&lc=in_ID&from=C&pn=com.vitiglobal.cashtree');
+				$respons = $sdata->sdata($url , $hed); unset($url); unset($hed);
+				$json 	 = json_decode($respons['0']['respons'],true);
+
+				$url[] 		= array('url' 	=> "https://api.ctree.id/".$json['result']['redirect']);
+				$urls[] 	= array('url' 	=> 'https://api.ctree.id/api2/user/info?mmses='.$config['mmses'].'&av='.$config['av'].'&ov=8.0.0&lc=in_ID&pn=com.vitiglobal.cashtree');
+				$reedm[] 	= array('url' 	=> "https://api.ctree.id/api2/ad/complete/video");
+				$reedh[] 	= array('post' 	=> 'mmses='.$config['mmses'].'&adid='.$datadaily['a'].'&av='.$config['av'].'&ov=8.0.0&lc=in_ID&pn=com.vitiglobal.cashtree');
+
+				$respons 	= $sdata->sdata($url); unset($url); 
+				$responsx 	= $sdata->sdata($urls); unset($urls); 
+				$responsrd 	= $sdata->sdata($reedm , $reedh); unset($reedm);unset($reedh); 
+
+				$jsonns = json_decode($responsrd['0']['respons'],true);
+				$json = json_decode($responsx['0']['respons'],true);
+
+				if($jsonns['code'] == '401001'){
+					echo "$u\n║ ║$m Watch Gagal$u\n║ ║$k Saldo Saat Ini :$h Rp. ".$json['result']['cash_status']['total']."$u\n║ ║$k Saldo Hari Ini :$h Rp. ".$json['result']['cash_status']['earn_today']."$u\r\n";
+				}else{
+					echo "$u\n║ ║$h Watch Berhasil$u\n║ ║$k Saldo Saat Ini :$h Rp. ".$json['result']['cash_status']['total']."$u\n║ ║$k Saldo Hari Ini :$h Rp. ".$json['result']['cash_status']['earn_today']."$u\r\n";
+				}
+			}
+		}
+
+		if(strtolower($datadaily['tp']) == 'install'){
+			if($datadaily['dr'] == 0){
+				echo $u."║".$n."›".$u."║$n ".$datadaily['a']."$k     ".$datadaily['tp']." Dapat :$b +Rp. ".$datadaily['dr']."$u\n║ ║$c ".$datadaily['tt']."$u\n║ ║$m Poin Sudah Di Ambil$u\r\n";
+			}else{
+				echo $u."║".$n."›".$u."║$n ".$datadaily['a']."$k     ".$datadaily['tp']." Dapat :$b +Rp.  ".$datadaily['dr']."$u\n║ ║$c ".$datadaily['tt'];
+
+				$url[] 		= array('url' 	=> 'https://api.ctree.id/api2/ad/start');
+				$hed[] 		= array('post'	=> 'mmses='.$config['mmses'].'&adid='.$datadaily['a'].'&av='.$config['av'].'&ov=8.0.0&lc=in_ID&from=C&pn=com.vitiglobal.cashtree');
+				$respons 	= $sdata->sdata($url , $hed); unset($url); unset($hed);
+				$json 	 	= json_decode($respons['0']['respons'],true);
+
+				$url[] 		= array('url' 	=> "https://api.ctree.id/".$json['result']['redirect']);
+				$apps[] 	= array('url' 	=> "https://api.ctree.id/api2/user/apps/add");
+				$apph[] 	= array('post'	=> 'app='.$datadaily['pk'].'&mmses='.$config['mmses'].'&size=13384697&av='.$config['av'].'&ov=8.0.0&lc=in_ID&pn=com.vitiglobal.cashtree');
+
+				$claim[] 	= array('url' 	=> "https://api.ctree.id/api2/ad/complete/reward");
+				$claih[] 	= array('post'	=> 'mmses='.$config['mmses'].'&adid='.$datadaily['a'].'&av='.$datadaily['av'].'&ov=8.0.0&lc=in_ID&pn=com.vitiglobal.cashtree');
+			
+				$urls[] 	= array('url' 	=> 'https://api.ctree.id/api2/user/info?mmses='.$config['mmses'].'&av='.$config['av'].'&ov=8.0.0&lc=in_ID&pn=com.vitiglobal.cashtree');
+				$responsx 	= $sdata->sdata($urls); unset($urls); 
+
+				$respons 	= $sdata->sdata($url); unset($url);  
+				$responsrd 	= $sdata->sdata($apps , $apph); unset($apph);unset($apps); 
+				$responscl 	= $sdata->sdata($claim , $claih); unset($claim);unset($claih); 
+				$jsonns 	= json_decode($responsrd['0']['respons'],true);
+				print_r($jsonns);
+
+
+				print_r($responscl);
+				$json 		= json_decode($responsx['0']['respons'],true);
+				$jsoncl 	= json_decode($responscl['0']['respons'],true);
+
+				//print_r($jsoncl);
+
+				if($jsonns['code'] == '401001' || $jsoncl['code'] != 0){
+					echo "$u\n║ ║$m Install Gagal$u\n║ ║$k Saldo Saat Ini :$h Rp. ".$json['result']['cash_status']['total']."$u\n║ ║$k Saldo Hari Ini :$h Rp. ".$json['result']['cash_status']['earn_today']."$u\r\n";
+				}else{
+					echo "$u\n║ ║$h Install Berhasil$u\n║ ║$k Saldo Saat Ini :$h Rp. ".$json['result']['cash_status']['total']."$u\n║ ║$k Saldo Hari Ini :$h Rp. ".$json['result']['cash_status']['earn_today']."$u\r\n";
+				}
+
+			}
+		}
+
+	}
+	echo $u."║".$n."›".$u."║$n Menunda :$p ";
+	for ($i=0; $i <5; $i++) { 
+		if(!preg_match("/\./", ((10 / 100) * $i))){
+			echo ((10 / 100) * $i)." % ";
+		}
+		sleep(1);
+	}
+	echo "$n\r\n";
+}
+# Ahmad Khoirul Marzuqin
+?>
