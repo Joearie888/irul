@@ -83,7 +83,7 @@ curl_setopt($ci, CURLOPT_URL, $cu);
 sleep($jeda);
 $ce = curl_exec($ci);
 curl_close($ci);
-echo $u."║".$n."›".$u."║$p Mengirim Pesan Wa  :$b $j ✓\r";
+echo $u."║".$n."›".$u."║$p Mengirim Pesan Wa  :$b $j$h ✓\r";
 }
 # Ahmad Khoirul Marzuqin
 echo "$u\n╚═╝\n";
