@@ -1,0 +1,41 @@
+#!/system/xbin/bash
+# Ahmad Khoirul Marzuqin
+n="\033[0m" # Normal
+# Ahmad Khoirul Marzuqin
+c="\033[90m" # Coklat
+# Ahmad Khoirul Marzuqin
+m="\033[91m" # Merah
+# Ahmad Khoirul Marzuqin
+h="\033[92m" # Hijau
+# Ahmad Khoirul Marzuqin
+k="\033[93m" # Kuning
+# Ahmad Khoirul Marzuqin
+u="\033[94m" # Ungu
+# Ahmad Khoirul Marzuqin
+p="\033[95m" # Pink
+# Ahmad Khoirul Marzuqin
+b="\033[96m" # Biru
+# Ahmad Khoirul Marzuqin
+echo "$u
+                  ╔══════════════╗
+                  ║$b Terima Kasih$u ║
+                  ╚══════════════╝
+$n
+       Kembali Ke Menu Dalam Hitungan$m 10$n Detik"
+# Ahmad Khoirul Marzuqin
+sleep 7;
+# Ahmad Khoirul Marzuqin
+echo "$h       Kembali Ke Menu Dalam Hitungan$k  3$h Detik"
+# Ahmad Khoirul Marzuqin
+sleep 1;
+# Ahmad Khoirul Marzuqin
+echo "$k       Kembali Ke Menu Dalam Hitungan$h  2$k Detik"
+# Ahmad Khoirul Marzuqin
+sleep 1;
+# Ahmad Khoirul Marzuqin
+echo "$m       Kembali Ke Menu Dalam Hitungan$n  1$m Detik"
+# Ahmad Khoirul Marzuqin
+sleep 1;
+# Ahmad Khoirul Marzuqin
+sh irul
+# Ahmad Khoirul Marzuqin
