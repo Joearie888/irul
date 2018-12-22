@@ -1,0 +1,53 @@
+#!/system/xbin/bash
+clear
+n="\033[0m" # Normal
+c="\033[90m" # Coklat
+m="\033[91m" # Merah
+h="\033[92m" # Hijau
+k="\033[93m" # Kuning
+u="\033[94m" # Ungu
+p="\033[95m" # Pink
+b="\033[96m" # Biru
+sh 0
+echo "$u                      ╔══════╗
+                      ║$k Call$u ║
+                      ╚══════╝
+
+╔══╗
+║"$n"››"$u"║$b Menu Yang Tersedia :$u
+║  ║
+║"$n"01"$u"║$n Grab$u
+║"$n"02"$u"║$c Tokopedia$u
+║"$n"09"$u"║$m Kembali$u
+║  ║"
+echo -n "║"$n"››"$u"║$b Pilih Nomor :$n "
+read irul
+echo $u"╚══╝$n"
+termux-tts-speak $irul
+
+# Call Grab
+if [ $irul = 01 ] || [ $irul = 1 ]
+then
+sh 0
+php cg
+sh 1
+fi
+
+# Call Tokopedia
+if [ $irul = 02 ] || [ $irul = 2 ]
+then
+sh 0
+php ct
+sh 1
+fi
+
+# Kembali
+if [ $irul = 09 ] || [ $irul = 9 ]
+then
+cd ..
+sh irul
+fi
+
+termux-tts-speak Nomor Yang Anda Masukkan Salah
+termux-tts-speak Silahkan Hubungi Pembuat Script Ini
+sh irul
