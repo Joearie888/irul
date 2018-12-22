@@ -1,0 +1,115 @@
+#!/system/xbin/bash
+clear
+n="\033[0m" # Normal
+c="\033[90m" # Coklat
+m="\033[91m" # Merah
+h="\033[92m" # Hijau
+k="\033[93m" # Kuning
+u="\033[94m" # Ungu
+p="\033[95m" # Pink
+b="\033[96m" # Biru
+sh 0
+echo "$u                       ╔═════╗
+                       ║$k Sms$u ║
+                       ╚═════╝
+
+╔══╗
+║"$n"››"$u"║$b Menu Yang Tersedia :$u
+║  ║
+║"$n"01"$u"║$n 4444$u
+║"$n"02"$u"║$c 99288$u
+║"$n"03"$u"║$m Grab$u
+║"$n"04"$u"║$h INFO$u
+║"$n"05"$u"║$k myIM3$u
+║"$n"06"$u"║$p OYOHOTELS$u
+║"$n"07"$u"║$b TIKET.COM$u
+║"$n"08"$u"║$n Tokopedia$u
+║"$n"09"$u"║$c TSEL-APPS$u
+║"$n"10"$u"║$m PHD Order$u
+║"$n"99"$u"║$h Kembali$u
+║  ║"
+echo -n "║"$n"››"$u"║$b Pilih Nomor :$n "
+read irul
+echo $u"╚══╝$n"
+termux-tts-speak $irul
+
+# Sms 4444
+if [ $irul = 01 ] || [ $irul = 1 ]
+then
+sh s4
+fi
+
+# Sms 99288
+if [ $irul = 02 ] || [ $irul = 2 ]
+then
+sh s9
+fi
+
+# Sms Grab
+if [ $irul = 03 ] || [ $irul = 3 ]
+then
+sh sg
+fi
+
+# Sms INFO
+if [ $irul = 04 ] || [ $irul = 4 ]
+then
+sh si
+fi
+
+# Sms myIM3
+if [ $irul = 05 ] || [ $irul = 5 ]
+then
+sh 0
+php sm
+sh 1
+fi
+
+# Sms OYOHOTELS
+if [ $irul = 06 ] || [ $irul = 6 ]
+then
+sh 0
+php so
+sh 1
+fi
+
+# Sms TIKET.COM
+if [ $irul = 07 ] || [ $irul = 7 ]
+then
+sh stc
+fi
+
+# Sms Tokopedia
+if [ $irul = 08 ] || [ $irul = 8 ]
+then
+sh 0
+php st
+sh 1
+fi
+
+# Sms TSEL-APPS
+if [ $irul = 09 ] || [ $irul = 9 ]
+then
+sh 0
+php sta
+sh 1
+fi
+
+# Sms PHD Order
+if [ $irul = 10 ] || [ $irul = 10 ]
+then
+sh 0
+php sp
+sh 1
+fi
+
+# Kembali
+if [ $irul = 99 ] || [ $irul = 99 ]
+then
+cd ..
+sh irul
+fi
+
+termux-tts-speak Nomor Yang Anda Masukkan Salah
+termux-tts-speak Silahkan Hubungi Pembuat Script Ini
+sh irul

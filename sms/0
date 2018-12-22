@@ -1,0 +1,26 @@
+#!/system/xbin/bash
+# Ahmad Khoirul Marzuqin
+clear
+# Ahmad Khoirul Marzuqin
+n="\033[0m" # Normal
+# Ahmad Khoirul Marzuqin
+c="\033[90m" # Coklat
+# Ahmad Khoirul Marzuqin
+m="\033[91m" # Merah
+# Ahmad Khoirul Marzuqin
+h="\033[92m" # Hijau
+# Ahmad Khoirul Marzuqin
+k="\033[93m" # Kuning
+# Ahmad Khoirul Marzuqin
+u="\033[94m" # ungu
+# Ahmad Khoirul Marzuqin
+p="\033[95m" # Pink
+# Ahmad Khoirul Marzuqin
+b="\033[96m" # Biru
+# Ahmad Khoirul Marzuqin
+echo "╔════════════════════════════╗ ╔════════════════════╗" | lolcat
+date +"║ Tanggal : "%d" "%B" "%Y" ║ ║ Jam : "%X" "%Z" ║" | lolcat
+echo "╚════════════════════════════╝ ╚════════════════════╝" | lolcat
+# Ahmad Khoirul Marzuqin
+echo $n
+# Ahmad Khoirul Marzuqin
